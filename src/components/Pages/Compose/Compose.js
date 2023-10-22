@@ -27,7 +27,7 @@ const Compose = () => {
 
   return (
     <>
-      <Card style={{ height: "100vh" }}>
+      <Card style={{ minHeight: "100vh" }}>
         <Card.Header>New Message</Card.Header>
         <Card.Body>
           <form

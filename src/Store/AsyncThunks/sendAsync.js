@@ -19,6 +19,7 @@ const sendAsync = createAsyncThunk(
             recipient: payload.recipient,
             subject: payload.subject,
             text: payload.text,
+            read: false,
           }),
           headers: {
             "Content-Type": "application/json",

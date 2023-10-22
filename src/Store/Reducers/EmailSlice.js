@@ -14,11 +14,16 @@ const EmailSlice = createSlice({
     getRecievedEmails(state, action) {
       const recievedEmails = [];
       for (let item in action.payload) {
-        recievedEmails.unshift(action.payload[item]);
+        recievedEmails.unshift({ ...action.payload[item], id: item });
       }
       state.recieved = recievedEmails;
     },
+    read(state, action) {
+      state.recieved = state.recieved.map((mail) => {
+        return mail.id === action.payload ? { ...mail, read: true } : mail;
+      });
+    },
   },
 });
-export const { send, getRecievedEmails } = EmailSlice.actions;
+export const { send, getRecievedEmails, read } = EmailSlice.actions;
 export default EmailSlice.reducer;

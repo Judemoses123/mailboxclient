@@ -5,7 +5,8 @@ import { BrowserRouter } from "react-router-dom";
 import ProtectedRoutes from "./components/Routes/ProtectedRoutes";
 import Compose from "./components/Pages/Compose/Compose";
 import Inbox from "./components/Pages/Inbox/Inbox";
-
+import emailFullDisplay from "./components/Pages/Inbox/EmailFullDisplay";
+import EmailFullDisplay from "./components/Pages/Inbox/EmailFullDisplay";
 function App() {
   return (
     <>
@@ -15,6 +16,7 @@ function App() {
           <Route path="account" element={<Account />} />
           <Route element={<ProtectedRoutes />}>
             <Route path="inbox" element={<Inbox />} />
+            <Route path="inbox/:mailId" element={<EmailFullDisplay />} />
             <Route path="compose" element={<Compose />} />
           </Route>
         </Routes>
