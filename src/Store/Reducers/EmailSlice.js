@@ -9,10 +9,16 @@ const EmailSlice = createSlice({
   initialState: initialEmailState,
   reducers: {
     send(state, action) {
-      state.sent = [{...action.payload}, ...state.sent];
+      state.sent = [{ ...action.payload }, ...state.sent];
     },
-    get(state, action) {},
+    getRecievedEmails(state, action) {
+      const recievedEmails = [];
+      for (let item in action.payload) {
+        recievedEmails.unshift(action.payload[item]);
+      }
+      state.recieved = recievedEmails;
+    },
   },
 });
-export const { send, get } = EmailSlice.actions;
+export const { send, getRecievedEmails } = EmailSlice.actions;
 export default EmailSlice.reducer;

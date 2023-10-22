@@ -13,7 +13,7 @@ const AuthForm = () => {
   const [alert, setAlert] = useState("");
   const [loginMode, setLoginMode] = useState(true);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const navigate= useNavigate();
   const submitHandler = async (event) => {
     event.preventDefault();
     const enteredEmail = emailInputRef.current.value;
@@ -42,7 +42,7 @@ const AuthForm = () => {
       const response = await dispatch(signupAsync(submitObject));
       setAlert(response.payload.message);
       if (response.payload.status === "success") {
-        navigate("/inbox");
+        navigate('/inbox');
       }
     } else {
       if (
@@ -55,7 +55,7 @@ const AuthForm = () => {
       const response = await dispatch(loginAsync(submitObject));
       setAlert(response.payload.message);
       if (response.payload.status === "success") {
-        navigate("/inbox");
+        navigate('/inbox');
       }
     }
   };
