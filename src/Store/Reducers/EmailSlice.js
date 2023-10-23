@@ -23,7 +23,13 @@ const EmailSlice = createSlice({
         return mail.id === action.payload ? { ...mail, read: true } : mail;
       });
     },
+    deleteEmail(state, action) {
+      state.received = state.received.filter((email) => {
+        return email.id != action.payload;
+      });
+    },
   },
 });
-export const { send, getReceivedEmails, read } = EmailSlice.actions;
+export const { send, getReceivedEmails, read, deleteEmail } =
+  EmailSlice.actions;
 export default EmailSlice.reducer;
