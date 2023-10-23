@@ -21,7 +21,6 @@ const loginAsync = createAsyncThunk(
       if (!response.ok) {
         const error = await response.json();
         return { status: "failed", message: "Login failed, Try Again" };
-        throw new Error("Login Failed!");
       }
       const data = await response.json();
       console.log(data);

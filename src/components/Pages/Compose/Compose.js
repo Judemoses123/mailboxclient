@@ -58,7 +58,6 @@ const Compose = () => {
         </Card.Body>
         <Card.Footer>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <Button onClick={handleSubmit}>Send</Button>
             <Button variant="danger">
               <Link
                 style={{ color: "white", textDecoration: "none" }}
@@ -67,6 +66,7 @@ const Compose = () => {
                 Delete
               </Link>
             </Button>
+            <Button onClick={handleSubmit}>Send</Button>
           </div>
         </Card.Footer>
       </Card>

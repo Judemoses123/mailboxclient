@@ -10,8 +10,8 @@ const Inbox = () => {
   useEffect(() => {
     dispatch(getEmailsAsync());
   }, []);
-  const recieved = useSelector((state) => state.email.recieved);
-  const unread = recieved.reduce((prev, curr) => {
+  const received = useSelector((state) => state.email.received);
+  const unread = received.reduce((prev, curr) => {
     if (curr.read != true) {
       return Number(prev) + 1;
     } else return Number(prev) + 0;
@@ -29,10 +29,10 @@ const Inbox = () => {
           }}
         >
           <b>Inbox</b>
-          <span>Unread: {unread}</span>
+          <span style={{fontSize:'1rem !important'}}>Unread: {unread}</span>
         </Card.Header>
         <Card.Body>
-          {recieved.map((item) => {
+          {received.map((item) => {
             return (
               <EmailDisplay
                 sender={item.sender}
@@ -44,11 +44,11 @@ const Inbox = () => {
             );
           })}
         </Card.Body>
-        <Card.Footer>
+        <Card.Footer style={{display:'flex', justifyContent:'end'}}>
           <Button>
             <Link
               to="/compose"
-              style={{ color: "white", textDecoration: "none" }}
+              style={{ color: "white", textDecoration: "none"}}
             >
               Compose
             </Link>

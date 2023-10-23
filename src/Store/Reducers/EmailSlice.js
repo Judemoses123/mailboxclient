@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialEmailState = {
   sent: [],
-  recieved: [],
+  received: [],
 };
 const EmailSlice = createSlice({
   name: "email",
@@ -11,19 +11,19 @@ const EmailSlice = createSlice({
     send(state, action) {
       state.sent = [{ ...action.payload }, ...state.sent];
     },
-    getRecievedEmails(state, action) {
-      const recievedEmails = [];
+    getReceivedEmails(state, action) {
+      const receivedEmails = [];
       for (let item in action.payload) {
-        recievedEmails.unshift({ ...action.payload[item], id: item });
+        receivedEmails.unshift({ ...action.payload[item], id: item });
       }
-      state.recieved = recievedEmails;
+      state.received = receivedEmails;
     },
     read(state, action) {
-      state.recieved = state.recieved.map((mail) => {
+      state.received = state.received.map((mail) => {
         return mail.id === action.payload ? { ...mail, read: true } : mail;
       });
     },
   },
 });
-export const { send, getRecievedEmails, read } = EmailSlice.actions;
+export const { send, getReceivedEmails, read } = EmailSlice.actions;
 export default EmailSlice.reducer;

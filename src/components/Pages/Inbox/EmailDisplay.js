@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import readAsync from "../../../Store/AsyncThunks/readAsync";
 
 const EmailDisplay = (props) => {
-  const recieved = useSelector((state) => state.email.recieved);
+  const received = useSelector((state) => state.email.received);
   const dispatch = useDispatch();
   const readHandler = () => {
     dispatch(readAsync(props.id));
@@ -33,7 +33,7 @@ const EmailDisplay = (props) => {
             />
           )}
           <b>
-            <div>{props.sender} : </div>
+            <div>{props.sender} </div>
           </b>
           <div
             style={{

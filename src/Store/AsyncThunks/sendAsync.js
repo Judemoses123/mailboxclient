@@ -11,7 +11,7 @@ const sendAsync = createAsyncThunk(
         .replace(".", "");
       console.log(recipient);
       const sendresponse = await fetch(
-        `https://mail-box-client-reactjs-default-rtdb.firebaseio.com/user/${recipient}/recieved.json`,
+        `https://mail-box-client-reactjs-default-rtdb.firebaseio.com/user/${recipient}/received.json`,
         {
           method: "POST",
           body: JSON.stringify({

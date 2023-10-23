@@ -9,7 +9,7 @@ const readAsync = createAsyncThunk(
         .replace("@", "")
         .replace(".", "");
       const response = await fetch(
-        `https://mail-box-client-reactjs-default-rtdb.firebaseio.com/user/${recipient}/recieved/${payload}.json`,
+        `https://mail-box-client-reactjs-default-rtdb.firebaseio.com/user/${recipient}/received/${payload}.json`,
         {
           method: "PATCH",
           body: JSON.stringify({
