@@ -35,7 +35,11 @@ const EmailDisplay = (props) => {
             />
           )}
           <b>
-            <div>{props.sender} </div>
+            {props.type == "received" ? (
+              <div>{props.sender} </div>
+            ) : (
+              <div>{props.recipient} </div>
+            )}
           </b>
           <div
             style={{

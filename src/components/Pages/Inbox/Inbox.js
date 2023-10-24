@@ -18,10 +18,15 @@ const Inbox = () => {
     } else return Number(prev) + 0;
   }, 0);
 
+  setInterval(() => {
+    console.log('fetching')
+    dispatch(getEmailsAsync());
+  }, 10000);
+
   return (
     <>
-    <CustomNavbar/>
-      <Card style={{ height:'calc(100vh - 3.4rem)' }}>
+      <CustomNavbar />
+      <Card style={{ height: "calc(100vh - 3.4rem)" }}>
         <Card.Header
           style={{
             fontSize: "1.2rem",
@@ -38,11 +43,12 @@ const Inbox = () => {
             return (
               <EmailDisplay
                 sender={item.sender}
+                recipient={item.recipient}
                 subject={item.subject}
                 text={item.text}
                 read={item.read}
                 id={item.id}
-                type='received'
+                type="received"
               />
             );
           })}

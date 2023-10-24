@@ -35,6 +35,7 @@ const Sent = (props) => {
               <EmailDisplay
                 sender={item.sender}
                 subject={item.subject}
+                recipient={item.recipient}
                 text={item.text}
                 read={item.read}
                 id={item.id}
