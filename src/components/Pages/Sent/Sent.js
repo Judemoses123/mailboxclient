@@ -1,27 +1,23 @@
-import React, { useEffect, useRef, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import getEmailsAsync from "../../../Store/AsyncThunks/getEmailsAsync";
-import EmailDisplay from "./EmailDisplay";
 import CustomNavbar from "../../Navigation/CustomNavbar";
+import EmailDisplay from "../Inbox/EmailDisplay";
+import getSentEmailAsync from "../../../Store/AsyncThunks/getSentEmailAsync";
 
-const Inbox = () => {
+const Sent = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getEmailsAsync());
+    dispatch(getSentEmailAsync());
   }, []);
-  const received = useSelector((state) => state.email.received);
-  const unread = received.reduce((prev, curr) => {
-    if (curr.read != true) {
-      return Number(prev) + 1;
-    } else return Number(prev) + 0;
-  }, 0);
-
+  const sent = useSelector((state) => state.email.sent);
   return (
     <>
-    <CustomNavbar/>
-      <Card style={{ height:'calc(100vh - 3.4rem)' }}>
+      <CustomNavbar />
+      <Card style={{ height: "calc(100vh - 3.4rem)" }}>
         <Card.Header
           style={{
             fontSize: "1.2rem",
@@ -30,11 +26,11 @@ const Inbox = () => {
             alignItems: "center",
           }}
         >
-          Inbox
-          <span style={{ fontSize: "1rem !important" }}>Unread: {unread}</span>
+          Sent
+          <span style={{ fontSize: "1rem !important" }}></span>
         </Card.Header>
         <Card.Body>
-          {received.map((item) => {
+          {sent.map((item) => {
             return (
               <EmailDisplay
                 sender={item.sender}
@@ -42,7 +38,7 @@ const Inbox = () => {
                 text={item.text}
                 read={item.read}
                 id={item.id}
-                type='received'
+                type='sent'
               />
             );
           })}
@@ -61,4 +57,4 @@ const Inbox = () => {
     </>
   );
 };
-export default Inbox;
+export default Sent;

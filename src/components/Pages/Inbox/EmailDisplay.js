@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 import readAsync from "../../../Store/AsyncThunks/readAsync";
 
 const EmailDisplay = (props) => {
-  const received = useSelector((state) => state.email.received);
   const dispatch = useDispatch();
   const readHandler = () => {
     dispatch(readAsync(props.id));
   };
   return (
-    <Link to={`/inbox/${props.id}`} onClick={readHandler}>
+    <Link
+      to={props.type == "received" ? `/inbox/${props.id}` : `/sent/${props.id}`}
+      onClick={readHandler}
+    >
       <Card style={{ margin: "5px 0" }}>
         <Card.Body
           style={{
@@ -20,7 +22,7 @@ const EmailDisplay = (props) => {
             padding: "1rem 2rem",
           }}
         >
-          {!props.read && (
+          {!props.read && props.type == "received" && (
             <span
               style={{
                 backgroundColor: "cornflowerblue",

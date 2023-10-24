@@ -6,6 +6,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useDispatch, useSelector } from "react-redux";
 import sendAsync from "../../../Store/AsyncThunks/sendAsync";
 import { Link } from "react-router-dom";
+import CustomNavbar from "../../Navigation/CustomNavbar";
 const Compose = () => {
   const dispatch = useDispatch();
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -27,7 +28,8 @@ const Compose = () => {
 
   return (
     <>
-      <Card style={{ minHeight: "100vh" }}>
+    <CustomNavbar/>
+      <Card style={{ height: "calc(100vh - 3.4rem)" }}>
         <Card.Header>New Message</Card.Header>
         <Card.Body>
           <form
