@@ -1,18 +1,12 @@
 import { Button, Card } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import getEmailsAsync from "../../../Store/AsyncThunks/getEmailsAsync";
 import CustomNavbar from "../../Navigation/CustomNavbar";
 import EmailDisplay from "../Inbox/EmailDisplay";
-import getSentEmailAsync from "../../../Store/AsyncThunks/getSentEmailAsync";
+import useSent from "../../../Hooks/useSent";
 
 const Sent = (props) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getSentEmailAsync());
-  }, []);
+  useSent();
   const sent = useSelector((state) => state.email.sent);
   return (
     <>
@@ -39,7 +33,7 @@ const Sent = (props) => {
                 text={item.text}
                 read={item.read}
                 id={item.id}
-                type='sent'
+                type="sent"
               />
             );
           })}

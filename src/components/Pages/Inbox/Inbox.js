@@ -1,27 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Card } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import getEmailsAsync from "../../../Store/AsyncThunks/getEmailsAsync";
 import EmailDisplay from "./EmailDisplay";
 import CustomNavbar from "../../Navigation/CustomNavbar";
+import useFetch from "../../../Hooks/useFetch";
 
 const Inbox = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getEmailsAsync());
-  }, []);
+  useFetch();
+
   const received = useSelector((state) => state.email.received);
   const unread = received.reduce((prev, curr) => {
     if (curr.read != true) {
       return Number(prev) + 1;
     } else return Number(prev) + 0;
   }, 0);
-
-  setInterval(() => {
-    console.log('fetching')
-    dispatch(getEmailsAsync());
-  }, 10000);
 
   return (
     <>

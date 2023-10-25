@@ -23,7 +23,6 @@ const loginAsync = createAsyncThunk(
         return { status: "failed", message: "Login failed, Try Again" };
       }
       const data = await response.json();
-      console.log(data);
       dispatch(login(data));
       return { status: "success", message: "Successfully Logged In!" };
     } catch (error) {

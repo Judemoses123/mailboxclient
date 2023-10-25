@@ -6,7 +6,6 @@ const getSentEmailAsync = createAsyncThunk(
   async (payload, { dispatch, getState }) => {
     try {
         const recipient = getState().auth.email.replace("@", "").replace(".", "");
-        console.log(recipient);
   
         const response = await fetch(
           `https://mail-box-client-reactjs-default-rtdb.firebaseio.com/user/${recipient}/sent.json`
@@ -19,7 +18,6 @@ const getSentEmailAsync = createAsyncThunk(
         }
   
         const data = await response.json();
-        console.log(data);
         dispatch(getSentEmails(data));
   
       } catch (error) {
