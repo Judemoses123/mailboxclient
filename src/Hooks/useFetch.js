@@ -11,7 +11,7 @@ const useFetch = () => {
 
   setInterval(() => {
     dispatch(getEmailsAsync());
-  }, 10000);
+  }, 5000);
 
   return null;
 };

@@ -46,6 +46,20 @@ const Inbox = () => {
               />
             );
           })}
+          {received.length == 0 && (
+            <div
+              style={{
+                width: "50vw",
+                height: "50vh",
+                backgroundImage:
+                  "url(https://static.vecteezy.com/system/resources/previews/028/139/218/original/still-empty-no-email-or-message-yet-concept-illustration-flat-design-eps10-simple-modern-graphic-element-for-landing-page-empty-state-ui-infographic-vector.jpg)",
+                backgroundSize: "contain",
+                margin: "auto",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+              }}
+            />
+          )}
         </Card.Body>
         <Card.Footer style={{ display: "flex", justifyContent: "end" }}>
           <Button>
